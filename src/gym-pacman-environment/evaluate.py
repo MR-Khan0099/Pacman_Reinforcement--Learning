@@ -7,7 +7,7 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 # Initialize environment and agent with the saved model
-model_path = "models/Pacman_Q_Model_L6_5000.keras"
+model_path = "models/Pacman_Q_Model_L6_newP_20_1000.keras"
 model = tf.keras.models.load_model(model_path)
 env = PacmanAgent(PacmanEnv())
 
@@ -73,4 +73,6 @@ plt.ylabel("Total Reward")
 plt.title("Evaluation Rewards Over Episodes")
 plt.grid()
 plt.show()
+
+# plt.savefig("evaluation_rewards.png")
 

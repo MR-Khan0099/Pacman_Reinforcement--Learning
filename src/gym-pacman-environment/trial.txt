@@ -117,7 +117,7 @@ max_replay_size = 10000
 episodes = 1500
 target_update_freq = 2
 model name= Pacman_Q_Model1_L4_again_t5_10_1500
-plot name = Pacman_Q_Rewards_L4_again_t5_10_1500
+plot name = Pacman_Q_Rewards_L4_again_t5_10_1500.png
 
 
 
