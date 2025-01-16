@@ -1,0 +1,140 @@
+
+
+## lev 1 and 2
+# state_size = 49  # Update according to your state representation
+# action_space = 4  # Number of possible actions
+# gamma = 0.95
+# epsilon = 1.0
+# epsilon_min = 0.005
+# epsilon_decay = 0.99
+# learning_rate = 0.02
+# batch_size = 64
+# max_replay_size = 10000
+# episodes = 1000/500
+# target_update_freq = 10
+
+Parameters Review
+gamma = 0.90 (Discount Factor)
+A lower value like 0.90 emphasizes immediate rewards over long-term rewards.
+Suggestion: Increase gamma to 0.95 or 0.99 to encourage the agent to focus on strategies that yield higher cumulative rewards in the long term.
+epsilon = 1.0 (Exploration Probability)
+Starting with 100% exploration is fine for initial episodes, but the decay rate might be too aggressive.
+Suggestion: Reduce the initial exploration rate slightly (e.g., epsilon = 0.9) or make the decay less aggressive (e.g., epsilon_decay = 0.99). This allows the agent to explore more before settling into exploitation.
+epsilon_min = 0.005 (Minimum Exploration Rate)
+A very small epsilon_min (0.005) means the agent will almost exclusively exploit the learned policy in later episodes. This can be an issue if the policy is suboptimal.
+Suggestion: Increase epsilon_min to 0.05 or 0.1 to ensure occasional exploration, which helps avoid local optima.
+epsilon_decay = 0.97 (Decay Rate)
+This decay rate reduces exploration quickly. The agent might not explore enough before switching to exploitation.
+Suggestion: Use a slower decay like epsilon_decay = 0.99 to extend the exploration phase.
+learning_rate = 0.02
+A relatively high learning rate can lead to unstable training, as updates to the Q-values might overshoot optimal values.
+Suggestion: Decrease the learning rate to 0.001 or 0.005 for smoother convergence.
+batch_size = 128
+A larger batch size stabilizes training by averaging over more experiences but can slow down updates.
+Suggestion: Experiment with smaller batch sizes, such as batch_size = 64, for faster updates early in training.
+episodes = 1000
+The number of episodes is reasonable, but improving the above parameters will likely reduce the need for longer training.
+target_update_freq = 10
+Updating the target network every 10 episodes is standard, but if the agent is learning rapidly, this could result in delayed updates.
+Suggestion: Reduce target_update_freq to 5 or even 1 if computational resources allow, so the target network stays more closely aligned with the main network.
+Suggested Parameter Changes
+python
+Copy code
+gamma = 0.99            # Focus on long-term rewards
+epsilon = 0.9           # Slightly lower initial exploration
+epsilon_min = 0.05      # Ensure occasional exploration
+epsilon_decay = 0.99    # Slower exploration decay
+learning_rate = 0.005   # More stable updates
+batch_size = 64         # Faster updates during training
+target_update_freq = 5  # More frequent target updates
+Other Strategies for Better Rewards
+Reward Design:
+
+Revisit the reward function. Ensure it properly incentivizes behaviors like:
+Eating dots.
+Avoiding ghosts.
+Exploring new areas of the map.
+Experience Replay:
+
+Use prioritized experience replay to sample transitions that have higher temporal-difference errors, which can speed up learning.
+Longer Training:
+
+Increase the number of episodes if the agent shows gradual improvement over time.
+Advanced Exploration:
+
+Consider epsilon-greedy with decaying noise or Boltzmann exploration for more intelligent exploration.
+Network Architecture:
+
+Add dropout layers or experiment with larger network sizes for better function approximation.
+Evaluation
+After updating the parameters, monitor metrics such as:
+
+Average reward per episode.
+The trend of cumulative rewards over time.
+Let me know if you'd like help implementing or tuning any of these suggestions!
+
+
+
+
+
+# Parameters- passed l3 
+state_size = 49  # Update according to your state representation
+action_space = 4  # Number of possible actions
+gamma = 0.95  #discount factor
+epsilon = 1.0 #exploration probability
+epsilon_min = 0.1 # minimum exploration probability
+epsilon_decay = 0.995 # exploration decay
+learning_rate = 0.005
+batch_size = 64
+max_replay_size = 10000
+episodes = 1000
+target_update_freq = 2
+
+ pacman_position = env.find_entity(env.render(), "pacman")
+    hunter_position = env.find_entity(env.render(), "hunter_ghost")
+    if pacman_position and hunter_position:
+        if pacman_position[0] == hunter_position[0] and abs(hunter_position[1] - pacman_position[1]) <= 1:
+            reward = -10
+        if pacman_position[1] == hunter_position[1] and abs(hunter_position[0] - pacman_position[0]) <= 1:
+            reward = -10
+
+
+
+
+
+level 4- fine , trained for 500 & 1000 episode and results are fine but leaving the 2 dots inside box. penalty is -10
+rewards= 82 , wining- passed
+# Parameters
+state_size = 49  # Update according to your state representation
+action_space = 4  # Number of possible actions
+gamma = 0.95  #discount factor
+epsilon = 1.0 #exploration probability
+epsilon_min = 0.1 # minimum exploration probability
+epsilon_decay = 0.995 # exploration decay
+learning_rate = 0.005
+batch_size = 64
+max_replay_size = 10000
+episodes = 1500
+target_update_freq = 2
+model name= Pacman_Q_Model1_L4_again_t5_10_1500
+plot name = Pacman_Q_Rewards_L4_again_t5_10_1500
+
+
+
+
+level =5  Parameters -level 4 lastest-- getting better reards,  but need to traiuned it for more episodes
+highest rewards 84- eating all dots -2500 episode - passed
+state_size = 49  # Update according to your state representation
+action_space = 4  # Number of possible actions
+gamma = 0.95  #discount factor
+epsilon = 1.0 #exploration probability
+epsilon_min = 0.1 # minimum exploration probability
+epsilon_decay = 0.995 # exploration decay
+learning_rate = 0.005
+batch_size = 64
+max_replay_size = 10000
+episodes = 2500
+target_update_freq = 2
+
+plot= Pacman_Q_Rewards_L5_2500.png 
+model = Pacman_Q_Model_L5_2500
