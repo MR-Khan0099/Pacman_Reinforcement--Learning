@@ -5,29 +5,30 @@ This repository contains the implementation of a Pacman game trained using Reinf
 
 ## Project Structure
 The repository is organized as follows:
-
-PACMANOPENAIGYM/  
-├── Pacman_Reinforcement--Learning/  
-│   ├── bin/  
-│   ├── models/  
-│   │   ├── Level_1/  
-│   │   ├── Level_2/  
-│   │   ├── Level_3/  
-│   │   ├── Level_4/  
-│   │   ├── Level_5/  
-│   │   ├── Level_6/  
-│   └── notebook/  
-├── src/  
-│   ├── gym-pacman-environment/  
-│   │   ├── final_models/  
-│   ├── AStar.py  
-│   ├── Deep-Q-Learning.py  
-│   ├── evaluate.py  
-│   ├── PacmanAgent.py  
-│   ├── utils.py  
-├── environment.yml  
-├── requirements.txt  
-├── README.md  
+```
+PACMANOPENAIGYM/
+├── Pacman_Reinforcement--Learning/
+│   ├── bin/
+│   ├── models/
+│   │   ├── Level_1/
+│   │   ├── Level_2/
+│   │   ├── Level_3/
+│   │   ├── Level_4/
+│   │   ├── Level_5/
+│   │   ├── Level_6/
+│   └── notebook/
+├── src/
+│   ├── gym-pacman-environment/
+│   │   ├── final_models/
+│   ├── AStar.py
+│   ├── Deep-Q-Learning.py
+│   ├── evaluate.py
+│   ├── PacmanAgent.py
+│   ├── utils.py
+├── environment.yml
+├── requirements.txt
+├── README.md
+```
 
 ### Key Components
 1. gym-pacman-environment: Custom Pacman environment built using OpenAI Gym.
