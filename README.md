@@ -236,13 +236,11 @@ if pacman_position and hunter_position:
 ```
 ## Results
 
-The trained agent's performance can be visualized using the provided scripts. Example results and graphs will be added here.
+The trained agent's performance can be visualized using the provided script above. 
 
 ## Contributing
 
 Contributions are welcome! Please fork the repository and submit a pull request.
 
-## License
 
-This project is licensed under the MIT License.
 
