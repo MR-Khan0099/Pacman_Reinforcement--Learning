@@ -20,11 +20,13 @@ PACMANOPENAIGYM/
 ├── src/
 │   ├── gym-pacman-environment/
 │   │   ├── final_models/
-│   ├── AStar.py
-│   ├── Deep-Q-Learning.py
-│   ├── evaluate.py
-│   ├── PacmanAgent.py
-│   ├── utils.py
+|   |   |--- models
+|   |   |-- plots
+│   |   |── AStar.py
+│   |   ├── Deep-Q-Learning.py
+│   |   ├── evaluate.py
+│   |   ├── PacmanAgent.py
+│   |   ├── utils.py
 ├── environment.yml
 ├── requirements.txt
 ├── README.md
@@ -69,12 +71,12 @@ PACMANOPENAIGYM/
 To train the Pacman agent for a specific level:
 
 1. Update the Level in PacmanAgent.py:
-Open src/PacmanAgent.py and modify the level_name variable to the desired level name. For example:
+Open src/gym-pacman-environment/PacmanAgent.py and modify the level_name variable to the desired level name. For example:
 ```python
 level_name = "Level_4"  
 ```
 2. Specify Model and Plot Names in Deep-Q-Learning.py:
-Open src/Deep-Q-Learning.py and update the model and plot file names to save the results for the specific level. For example:
+Open src/gym-pacman-environment//Deep-Q-Learning.py and update the model and plot file names to save the results for the specific level. For example:
 ```python
 model_name = "Pacman_Q_Model_L4_1500.keras"  
 plot_name = "Pacman_Q_Rewards_L4_again_1500.png"  
@@ -90,7 +92,7 @@ model_file_path = os.path.join(model_save_dir, "Pacman_Q_Model_L4_1500.keras")
 Execute the training script:
 
 ```bash
-python src/Deep-Q-Learning.py  
+python src/gym-pacman-environment/Deep-Q-Learning.py  
 ```
 During training, you can observe the agent's learning process as it renders in real-time. After training, the reward plots and model will be saved.
 
@@ -100,7 +102,7 @@ To evaluate a trained agent:
 Similar to training, update the level_name variable in PacmanAgent.py to match the level you want to evaluate.
 
 2. Specify the Model Name in evaluate.py:
-Open src/evaluate.py and update the model file path to the corresponding trained model for the selected level. For example:
+Open src/gym-pacman-environment/evaluate.py and update the model file path to the corresponding trained model for the selected level. For example:
 ```bash
 model_path = "models/Pacman_Q_Model_L6_2500.keras
 ```
@@ -108,7 +110,7 @@ model_path = "models/Pacman_Q_Model_L6_2500.keras
 3. Run the Evaluation Script:
 Execute the evaluation script:
 ```bash
-python src/evaluate.py  
+python src/gym-pacman-environment/evaluate.py  
 ```
 
 ## Algorithms Implemented
