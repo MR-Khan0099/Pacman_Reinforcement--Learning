@@ -102,24 +102,6 @@ class PacmanAgent(gym.Wrapper):
             raise RuntimeError(f"Failed to load model from {model_path}: {e}")
  #########Load model####
 
-    # def act(self, action: int) -> str:
-    #     """
-    #     Convert the action from an integer to a string
-    #     :param action: The action to be executed as an integer
-    #     :return: The action to be executed as a string
-    #     """
-    #     match action:
-    #         case 0:
-    #             action = "GO_NORTH"
-    #         case 1:
-    #             action = "GO_WEST"
-    #         case 2:
-    #             action = "GO_EAST"
-    #         case 3:
-    #             action = "GO_SOUTH"
-    #         case _:
-    #             raise ValueError(f"Invalid action: {action}")
-    #     return action
     def act(self ,observation: np.ndarray) -> int:
         """
         Predict the next action using the trained model.
@@ -164,16 +146,7 @@ class PacmanAgent(gym.Wrapper):
             case _:
                 raise ValueError(f"Invalid action: {action}")
         return action
-        # if action == 0:
-        #     return "GO_NORTH"
-        # elif action == 1:
-        #     return "GO_WEST"
-        # elif action == 2:
-        #     return "GO_EAST"
-        # elif action == 3:
-        #     return "GO_SOUTH"
-        # else:
-        #     raise ValueError(f"Invalid action: {action}")
+       
 
     def step(self, action: int) -> tuple:
         """
@@ -216,134 +189,3 @@ if __name__ == "__main__":
 
     env.close()
 
-
-
-
-
-
-
-# #     def step(self, action: int) -> tuple:
-# #         """
-# #         Execute one time step within the environment.
-# #         :param action: The action to be executed.
-# #         :return: A tuple (observation, reward, done, info).
-# #         """
-# #         if action not in range(self.action_space.n):
-# #             raise ValueError(f"Invalid action {action}. Valid actions are in the range [0, {self.action_space.n - 1}].")
-
-# #         try:
-# #             # Perform the step in the wrapped environment
-# #             observation, reward, done, info = self.env.step(action)
-
-# #             # Optionally preprocess observation if needed
-# #             if isinstance(observation, np.ndarray):
-# #                 observation = observation.flatten()  # Example: flatten 2D observations
-# #             return observation, reward, done, info
-
-# #         except Exception as e:
-# #             raise RuntimeError(f"Error during environment 'step' execution with action {action}.") from e
-
-
-# #     def reset(self) -> object:
-# #         """
-# #         Resets the state of the environment and returns an initial observation.
-# #         :return: The initial observation of the space.
-# #         """
-# #         try:
-# #             # Perform reset in the wrapped environment
-# #             observation = self.env.reset()
-
-# #             # Optionally preprocess observation if needed
-# #             if isinstance(observation, np.ndarray):
-# #                 observation = observation.flatten()  # Example: flatten 2D observations
-# #             return observation
-
-# #         except AttributeError as e:
-# #             raise RuntimeError("The environment's 'reset' method failed.") from e
-
-
-# # if __name__ == "__main__":
-# #   
-
-# #     # Execute all episodes by resetting the game and play it until it is over
-# #     for i in range(episode_count):
-# #         observation = env.reset()
-# #         reward = 0
-# #         done = False
-
-# #         while not done:
-# #             # Determine the agent's next action based on the current observation and reward and execute it
-# #             if printState:
-# #                 env.render()
-# #                 time.sleep(0.1)
-
-# #             # Use the model to decide the action
-# #             action = env.act(observation)
-# #             print("Action:", action)
-# #             observation, reward, done, debug = env.step(action)
-            
-# #             if done:
-# #                 print(f"Episode {i + 1} finished with reward: {reward}")
-# #                 break
-
-# #     env.close()
-
-
-
-#     def act(self, observation: np.ndarray) -> int:
-#         """
-#         Predict the next action using the trained model.
-#         :param observation: The current observation of the environment.
-#         :return: The predicted action.
-#         """
-#         if self.model is None:
-#             raise ValueError("Model not loaded. Cannot predict actions.")
-
-#         # Flatten the observation if it's a 2D grid
-#         if len(observation.shape) > 1:
-#             observation = observation.flatten()
-
-#         # Add a batch dimension
-#         observation = np.expand_dims(observation, axis=0)
-
-#         # Predict Q-values
-#         q_values = self.model.predict(observation, verbose=0)
-#         action = np.argmax(q_values)
-#         return action
-
-#     def step(self, action: int) -> tuple:
-#         """
-#         Execute one time step within the environment.
-#         :param action: The action to be executed.
-#         :return: A tuple (observation, reward, done, info).
-#         """
-#         if action not in range(self.action_space.n):
-#             raise ValueError(f"Invalid action {action}. Valid actions are in the range [0, {self.action_space.n - 1}].")
-
-#         try:
-#             observation, reward, done, info = self.env.step(action)
-
-#             if isinstance(observation, np.ndarray):
-#                 observation = observation.flatten()  # Ensure observation is flattened
-#             return observation, reward, done, info
-
-#         except Exception as e:
-#             raise RuntimeError(f"Error during environment 'step' execution with action {action}.") from e
-
-#     def reset(self) -> object:
-#         """
-#         Resets the state of the environment and returns an initial observation.
-#         :return: The initial observation of the space.
-#         """
-#         try:
-#             observation = self.env.reset()
-#             if isinstance(observation, np.ndarray):
-#                 observation = observation.flatten()
-#             return observation
-
-#         except AttributeError as e:
-#             raise RuntimeError("The environment's 'reset' method failed.") from e
-
-
-
-  

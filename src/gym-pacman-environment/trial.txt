@@ -13,6 +13,12 @@
 # episodes = 1000/500
 # target_update_freq = 10
 
+ if pacman_position[0] == hunter_position[0] and abs(hunter_position[1] - pacman_position[1]) <= 1:
+            reward = -1
+        if pacman_position[1] == hunter_position[1] and abs(hunter_position[0] - pacman_position[0]) <= 1:
+            reward = -1
+
+
 Parameters Review
 gamma = 0.90 (Discount Factor)
 A lower value like 0.90 emphasizes immediate rewards over long-term rewards.
@@ -90,6 +96,7 @@ max_replay_size = 10000
 episodes = 1000
 target_update_freq = 2
 
+#penalty for leaving the dots
  pacman_position = env.find_entity(env.render(), "pacman")
     hunter_position = env.find_entity(env.render(), "hunter_ghost")
     if pacman_position and hunter_position:

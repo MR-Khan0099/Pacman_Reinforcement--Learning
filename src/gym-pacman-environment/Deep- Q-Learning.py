@@ -4,7 +4,7 @@ from collections import deque
 import tensorflow as tf
 from tensorflow.keras import Sequential
 from tensorflow.keras.layers import Dense
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt 
 import os  # To handle file and directory operations
 from gym_pacman_environment.envs import PacmanEnv
 from PacmanAgent import PacmanAgent  # Import the PacmanAgent
@@ -15,7 +15,7 @@ state_space = np.prod(env.reset().shape)  # Flatten the state
 action_space = env.action_space.n
 
 
-# # Parameters -level 4 lastest and level5 passed
+# # Parameters -level 4 latest and level5 passed
 state_size = 49  # Update according to your state representation
 action_space = 4  # Number of possible actions
 gamma = 0.95  #discount factor
@@ -28,14 +28,6 @@ max_replay_size = 10000
 episodes = 1500
 target_update_freq = 2
 
-
-# gamma = 0.99            # Focus on long-term rewards
-# epsilon = 0.9           # Slightly lower initial exploration
-# epsilon_min = 0.05      # Ensure occasional exploration
-# epsilon_decay = 0.99    # Slower exploration decay
-# learning_rate = 0.005   # More stable updates
-# batch_size = 64         # Faster updates during training
-# target_update_freq = 5  # More frequent target updates
 
 
 ## lev 1 and 2
